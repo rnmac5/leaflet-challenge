@@ -9,18 +9,26 @@ d3.json(queryUrl).then(data => {
 
 // create function based on depth of the earthquake
 function colorWheel(depth) {
-  if (depth > 90) 
+  if (depth >= 90) 
+    return '#d42400';
+  else if (depth > 80) 
     return '#fc4e2a';
   else if (depth > 70) 
     return '#fd8d3c';
-  else if (depth > 50) 
+  else if (depth > 60) 
+    return '#fda33c';
+  else if (depth > 50)
     return '#feb24c';
+  else if (depth > 40) 
+    return '#e8c25d';
   else if (depth > 30) 
     return '#fed976';
-  else if (depth > 10) 
+  else if (depth > 20) 
     return '#d9f0a3';
-  else 
+  else if (depth > 10) 
     return '#addd8e';
+  else 
+    return '#58b020';
 }
 
 function styleInfo(feature) {
@@ -110,8 +118,8 @@ function createFeatures(earthquakeData) {
  var legend = L.control({ position: "bottomright" });
  legend.onAdd = function() {
    var div = L.DomUtil.create("div", "info legend");
-   var limits = [-10, 10, 30, 50, 70, 90];;
-   var colors = ['#fc4e2a', '#fd8d3c', '#feb24c', '#fed976', '#d9f0a3', '#addd8e'];
+   var limits = [-10, 10, 20, 30, 40, 50, 60, 70, 80, 90];;
+   var colors = ['#d42400', '#fc4e2a', '#fd8d3c', '#fda33c', '#feb24c', '#e8c25d', '#fed976', '#d9f0a3', '#addd8e', '#58b020'];
    var labels = [];
 
 
